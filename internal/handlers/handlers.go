@@ -64,8 +64,8 @@ func UploadHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "file write error", http.StatusInternalServerError)
 		return
 	}
-
-	fmt.Fprintln(w, convertedData)
+	w.WriteHeader(http.StatusOK)
+	w.Write([]byte(convertedData))
 }
 
 func IndexHandler(w http.ResponseWriter, r *http.Request) {
