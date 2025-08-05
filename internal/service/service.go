@@ -1,15 +1,16 @@
 package service
 
 import (
-	"strings"
-
 	"github.com/Yandex-Practicum/go1fl-sprint6-final/pkg/morse"
 )
 
 func isMorseCode(text string) bool {
-	return !strings.ContainsFunc(text, func(r rune) bool {
-		return r != '.' && r != '-' && r != '/' && r != ' '
-	})
+	for _, ch := range text {
+		if ch != '.' && ch != '-' && ch != '/' && ch != ' ' {
+			return false
+		}
+	}
+	return true
 }
 
 func ConvertMorseCode(text string) string {
